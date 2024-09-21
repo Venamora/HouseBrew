@@ -1,5 +1,6 @@
 import React from 'react';
 import Img2 from '../../assets/americano.png';
+import Img3 from '../../assets/latte.png';
 
 const MenuData = [
   {
@@ -11,7 +12,7 @@ const MenuData = [
   },
   {
     id: 2,
-    img: Img2,
+    img: Img3,
     name: 'Latte',
     description: 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     aosDelay: 100,
