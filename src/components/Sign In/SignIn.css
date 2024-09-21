@@ -1,0 +1,63 @@
+/* SignIn.css */
+body{
+    background-color: #270c03;
+    justify-content: center;
+    align-items: center;
+}
+.signin-container {
+    display: flex;
+    flex-direction: column;  /* Arrange children vertically */
+    align-items: center;     /* Center children horizontally */
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.signin-container h1 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.input-group {
+    margin-bottom: 15px; /* Space between input groups */
+}
+
+.input-group label {
+    display: block;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    text-align: center;
+  }
+
+.input-group input {
+    padding: 10px;
+    border: 1px solid #6c4e31;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+.signin-button {
+    display: inline-block; /* Change to inline-block to center with margin */
+    margin: 10px auto;    /* Center the button */
+    background-color: #834c3c; /* Example color */
+    color: white;
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.signin-button:hover {
+    background-color: #471c18; /* Darker shade for hover */
+}
