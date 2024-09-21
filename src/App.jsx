@@ -21,6 +21,7 @@ const App = () => {
     <NavBar />
     <Home />
     <Menu />
+    
   </div>
 }
 
