@@ -34,7 +34,9 @@ const MenuData = [
 
 const Menu = () => {
   return (
-    <div className="py-10">
+  <>
+  <span id='menu'></span>
+  <div className="py-10">
       <div className="container">
         {/* header and title */}
         <div className="text-center mb-20">
@@ -62,6 +64,7 @@ const Menu = () => {
         </div>
       </div>
     </div>
+  </>
   );
 };
 
