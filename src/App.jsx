@@ -4,6 +4,7 @@ import"aos/dist/aos.css";
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import Menu from './components/Menu/Menu';
+import Footer from './components/Footer/Footer';
 
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
     <NavBar />
     <Home />
     <Menu />
-    
+    <Footer/>
   </div>
 }
 
