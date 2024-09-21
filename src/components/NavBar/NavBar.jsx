@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from '../../assets/logo_coffee.png';
+import { useNavigate } from 'react-router-dom'; 
 
 
 const Menus = [
@@ -20,6 +21,10 @@ const Menus = [
     },
 ];
 const NavBar = () => {
+    const navigate = useNavigate();
+    const handleSignInClick = () => {
+        navigate('/signin'); // Programmatically navigate to the sign-in page
+    };
     return (
         <div className="bg-gradient-to-r from-primary to-secondary/90 text-white">
             <div className="container py-4">
@@ -46,7 +51,9 @@ const NavBar = () => {
                         <div className='search-bar'>
                         <input type="text" placeholder="Search" className='w-[100px] md:w-[200px] sm:w-[100px] p-1 rounded-xl ' />
                         </div>
-                        <button className='bg-primary/70 px-6 py-2 rounded-3xl hover:scale-105 duration-200' > Sign In</button>
+                        <button className='bg-primary/70 px-6 py-2 rounded-3xl hover:scale-105 duration-200' 
+                        onClick={handleSignInClick}
+                        > Sign In</button>
                     </div>
                 </div>
             </div>

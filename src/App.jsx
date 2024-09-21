@@ -5,6 +5,8 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import Menu from './components/Menu/Menu';
 import Footer from './components/Footer/Footer';
+import SignIn from './components/Sign In/SignIn';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 const App = () => {
@@ -18,12 +20,19 @@ const App = () => {
       }
     );
   })
-  return <div className = "overflow-x-hidden">
+  return (
+    <Router>
+    <div className = "overflow-x-hidden">
     <NavBar />
-    <Home />
-    <Menu />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/menu" element={<Menu />} />
+      <Route path="/signin" element={<SignIn />} /> 
+    </Routes>
     <Footer/>
   </div>
+  </Router>
+  )
 }
 
 export default App
