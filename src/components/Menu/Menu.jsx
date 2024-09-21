@@ -1,6 +1,7 @@
 import React from 'react';
 import Img2 from '../../assets/americano.png';
 import Img3 from '../../assets/latte.png';
+import './Menu.css';
 
 const MenuData = [
   {
@@ -35,38 +36,32 @@ const MenuData = [
 
 const Menu = () => {
   return (
-  <>
-  <span id='menu'></span>
-  <div className="py-10">
-      <div className="container">
-        {/* header and title */}
-        <div className="text-center mb-20">
-          <h1 className="text-4xl font-bold font-cursive text-gray-800">Our Menu's</h1>
-        </div>
-        {/* Menu Card Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-14 md: gap-6 place-items-center">
-          {/* Display first 2 items (index 1 and 2) */}
-          {MenuData.filter((data, index) => index < 2).map((data, index) => (
-            <div data-aos = 'fade-up' data-aos-delay = {data.aosDelay} key={index} className="flex flex-col items-center rounded-2xl bg-white hover:bg-primary hover text-white shadow-xl duration-200 max-w-[400px] group relative text-center">
-              <img src={data.img} alt={data.name} className='max-w-[300px] block mx-auto transform -translate-y-1 group-hover:scale-110 group-hover:rotate-6 duration 200'/>
-              <h1 className="text-xl font-semibold text-gray-600 group-hover:text-white">{data.name}</h1>
-              <p className="p-3 text-gray-600 group-hover:text-white">{data.description}</p>
-            </div>
-          ))}
-
-          {/* Display next 2 items (index 3 and 4) */}
-          {MenuData.filter((data, index) => index >= 2 && index < 4).map((data, index) => (
-            <div data-aos = 'fade-up' data-aos-delay = {data.aosDelay} key={index} className="flex flex-col items-center rounded-2xl bg-white hover:bg-primary hover text-white shadow-xl duration-200 max-w-[400px] group relative text-center">
-              <img src={data.img} alt={data.name} className='max-w-[300px] block mx-auto transform -translate-y-1 group-hover:scale-110 group-hover:rotate-6 duration 300'/>
-              <h1 className="text-xl font-semibold mt-2 text-gray-600 group-hover:text-white">{data.name}</h1>
-              <p className="p-3 text-gray-600 group-hover:text-white">{data.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </>
+      <>
+          <span id='menu'></span>
+          <div className="py-10">
+              <div className="container">
+                  <div className="text-center mb-20">
+                      <h1 className="text-4xl font-bold font-cursive text-gray-800">Our Menu's</h1>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-14 md:gap-6 place-items-center">
+                      {MenuData.map((data, index) => (
+                          <div
+                              data-aos='fade-up'
+                              data-aos-delay={data.aosDelay}
+                              key={data.id}
+                              className={styles.menuCard}
+                          >
+                              <img src={data.img} alt={data.name} className={styles.menuImage} />
+                              <h1 className={styles.menuTitle}>{data.name}</h1>
+                              <p className={styles.menuDescription}>{data.description}</p>
+                          </div>
+                      ))}
+                  </div>
+              </div>
+          </div>
+      </>
   );
 };
 
 export default Menu;
+

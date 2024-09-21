@@ -25,10 +25,10 @@ const App = () => {
     <div className = "overflow-x-hidden">
     <NavBar />
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/menu" element={<Menu />} />
       <Route path="/signin" element={<SignIn />} /> 
     </Routes>
+    <Home />
+    <Menu />
     <Footer/>
   </div>
   </Router>
