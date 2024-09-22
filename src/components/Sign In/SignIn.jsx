@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SignIn.css';
 
 const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-  
+    const navigate = useNavigate();
+    const createAcc = () => {
+      navigate('/signup'); 
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
         // Handle login logic here (e.g., API call)
@@ -35,6 +39,16 @@ const SignIn = () => {
               required
             />
           </div>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10px' }}>
+          <a 
+            style={{ textDecoration: 'underline', cursor: 'pointer' }} 
+            className='text-bluelight' 
+            onClick={createAcc}
+          >
+          Create Account
+          </a>
+          </div>
+          <br />
           <button type="submit" className="signin-button">Sign In</button>
         </form>
       </div>

@@ -14,9 +14,6 @@ const Break = () => {
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <br />
         
     </div>
   )
