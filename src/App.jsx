@@ -7,6 +7,7 @@ import Menu from './components/Menu/Menu';
 import Footer from './components/Footer/Footer';
 import SignIn from './components/Sign In/SignIn';
 import Break from './components/Break/Break';
+import SignUp from './components/Sign Up/SignUp';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -28,6 +29,7 @@ const App = () => {
     <Routes>
       <Route path="/signin" element={<><SignIn /><Break /></>} /> 
       <Route path="/" element={<><Home/><Menu/></>} />
+      <Route path="/signup" element={<><SignUp /><Break /></>} />
     </Routes>
     <Footer/>
   </div>

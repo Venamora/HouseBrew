@@ -23,7 +23,7 @@ const Menus = [
 const NavBar = () => {
     const navigate = useNavigate();
     const handleSignInClick = () => {
-        navigate('/signin'); // Programmatically navigate to the sign-in page
+        navigate('/signin');
     };
     return (
         <div className="bg-gradient-to-r from-primary to-secondary/90 text-white">
