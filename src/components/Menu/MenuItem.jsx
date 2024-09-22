@@ -44,7 +44,7 @@ const MenuItem = () => {
   }
 
   return (
-    <div className="container mx-auto my-10 p-6">
+    <div className="container mx-auto my-10 p-6 bg-white">
       <div className="max-w-2xl mx-auto">
         <img src={menuItem.img} alt={menuItem.name} className="w-full h-auto mb-4 rounded-lg" />
         <h1 className="text-4xl font-bold mb-4">{menuItem.name}</h1>
