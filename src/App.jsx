@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Menu from './components/Menu/Menu';
 import Footer from './components/Footer/Footer';
 import SignIn from './components/Sign In/SignIn';
+import Break from './components/Break/Break';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -25,7 +26,7 @@ const App = () => {
     <div className = "overflow-x-hidden">
     <NavBar />
     <Routes>
-      <Route path="/signin" element={<SignIn />} /> 
+      <Route path="/signin" element={<><SignIn /><Break /></>} /> 
       <Route path="/" element={<><Home/><Menu/></>} />
     </Routes>
     <Footer/>

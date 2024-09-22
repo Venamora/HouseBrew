@@ -14,7 +14,7 @@ const SignIn = () => {
         setPassword('');
     };
     return (
-        <div className="signin-container">
+        <div className="signin-container scale-100 py-10">
         <h1>Sign In  to Your Account</h1>
         <form className="signin-form" onSubmit={handleSubmit}>
           <div className="input-group">
