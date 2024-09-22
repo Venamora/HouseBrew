@@ -26,9 +26,8 @@ const App = () => {
     <NavBar />
     <Routes>
       <Route path="/signin" element={<SignIn />} /> 
+      <Route path="/" element={<><Home/><Menu/></>} />
     </Routes>
-    <Home />
-    <Menu />
     <Footer/>
   </div>
   </Router>
