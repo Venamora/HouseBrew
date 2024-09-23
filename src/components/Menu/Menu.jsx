@@ -1,44 +1,24 @@
 "use client";
 
-import React from "react";
-import Img2 from "../../assets/americano.png";
-import Img3 from "../../assets/latte.png";
+import React, { useState } from "react";
 import "./Menu.css";
 import useFetchKopi from "../../hook/useFetchKopi";
 
-const MenuData = [
-  {
-    id: 1,
-    img: "https://static.vecteezy.com/system/resources/thumbnails/047/312/146/small/coffee-beans-and-grounds-png.png",
-    name: "Americano",
-    description: "A bold espresso with hot water.",
-    aosDelay: 100,
-  },
-  {
-    id: 2,
-    img: Img3,
-    name: "Latte",
-    description: "Smooth espresso with steamed milk.",
-    aosDelay: 100,
-  },
-  {
-    id: 3,
-    img: Img2,
-    name: "Manual Brew",
-    description: "Hand-crafted brewed coffee.",
-    aosDelay: 300,
-  },
-  {
-    id: 4,
-    img: Img2,
-    name: "Magic Brew",
-    description: "Our signature secret brew.",
-    aosDelay: 400,
-  },
-];
-
 const Menu = () => {
-  const kopi = useFetchKopi();
+  const [filterQuery, setFilterQuery] = useState({});
+
+  const kopi = useFetchKopi(filterQuery);
+
+  const onChangeAttribute = (attribute) => (e) => {
+    const newFilterQuery = {
+      ...filterQuery,
+      [attribute]: e.target.value,
+    };
+
+    if (newFilterQuery[attribute] !== filterQuery[attribute]) {
+      setFilterQuery(newFilterQuery);
+    }
+  };
 
   return (
     <>
@@ -50,14 +30,34 @@ const Menu = () => {
             <h1 className="text-4xl font-bold font-cursive text-gray-800">
               Our Menu's
             </h1>
-            <form className="search-bar">
-              <input
-                name="search-coffee"
-                type="text"
-                placeholder="Search coffee"
-                className="w-[100px] md:w-[200px] sm:w-[100px] p-1 rounded-xl text-center border-[2px] border-primary text-primary placeholder:text-primary"
-              />
-            </form>
+            <div className="flex flex-col gap-y-3 items-center">
+              <div className="search-bar">
+                <input
+                  onChange={onChangeAttribute("nama")}
+                  type="text"
+                  placeholder="Search coffee"
+                  className=" p-1 rounded-xl text-center border-[2px] border-primary text-primary placeholder:text-primary"
+                />
+              </div>
+              <div className="flex flex-row gap-x-3">
+                <div className="search-bar">
+                  <input
+                    onChange={onChangeAttribute("hargaMin")}
+                    type="number"
+                    placeholder="Minimum Price"
+                    className=" p-1 rounded-xl text-center border-[2px] border-primary text-primary placeholder:text-primary"
+                  />
+                </div>
+                <div className="search-bar">
+                  <input
+                    onChange={onChangeAttribute("hargaMax")}
+                    type="number"
+                    placeholder="Maximum Price"
+                    className=" p-1 rounded-xl text-center border-[2px] border-primary text-primary placeholder:text-primary"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           {/* Menu Card Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-14 md:gap-6 place-items-center">
@@ -86,8 +86,9 @@ const Menu = () => {
               ))}
 
             {/* Display next 2 items (index 3 and 4) */}
-            {MenuData.filter((data, index) => index >= 2 && index < 4).map(
-              (data, index) => (
+            {kopi
+              .filter((data, index) => index >= 2 && index < 4)
+              .map((data, index) => (
                 <div
                   data-aos="fade-up"
                   data-aos-delay={data.aosDelay}
@@ -106,8 +107,7 @@ const Menu = () => {
                     {data.description}
                   </p>
                 </div>
-              )
-            )}
+              ))}
           </div>
         </div>
       </div>
