@@ -37,7 +37,12 @@ const MenuData = [
 
 const MenuItem = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
   const menuItem = MenuData.find(item => item.id === parseInt(id));
+
+  if (!isAdmin) {
+    navigate('/'); 
+  }
 
   if (!menuItem) {
     return <div>Menu item not found</div>;
