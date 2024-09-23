@@ -10,6 +10,7 @@ const MenuData = [
     img: Img2,
     name: 'Americano',
     description: 'A bold espresso with hot water.',
+    price: 'Rp 20.000',
     aosDelay: 100,
   },
   {
@@ -17,6 +18,7 @@ const MenuData = [
     img: Img3,
     name: 'Latte',
     description: 'Smooth espresso with steamed milk.',
+    price: 'Rp 30.000',
     aosDelay: 100,
   },
   {
@@ -24,6 +26,7 @@ const MenuData = [
     img: Img2,
     name: 'Manual Brew',
     description: 'Hand-crafted brewed coffee.',
+    price: 'Rp 25.000',
     aosDelay: 300,
   },
   {
@@ -31,6 +34,7 @@ const MenuData = [
     img: Img2,
     name: 'Magic Brew',
     description: 'Our signature secret brew.',
+    price: 'Rp28.000',
     aosDelay: 400,
   },
 ];
@@ -53,6 +57,7 @@ const Menu = () => {
                   <img src={data.img} alt={data.name} className='max-w-[300px] block mx-auto transform -translate-y-1 group-hover:scale-110 group-hover:rotate-6 duration 200' />
                   <h1 className="text-xl font-semibold text-gray-600 group-hover:text-white">{data.name}</h1>
                   <p className="p-3 text-gray-600 group-hover:text-white">{data.description}</p>
+                  <p className="p-3 text-gray-600 group-hover:text-white">{data.price}</p>
                 </div>
               </Link>
             ))}

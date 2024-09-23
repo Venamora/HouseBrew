@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import AOS from 'aos';
 import"aos/dist/aos.css";
 import NavBar from './components/NavBar/NavBar';
@@ -13,6 +13,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 const App = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
+
   useEffect(() => {
     AOS.init(
       {
@@ -22,7 +24,10 @@ const App = () => {
         delay: 100,
       }
     );
-  })
+    const userIsAdmin = true; // Change this based on your auth logic
+    setIsAdmin(userIsAdmin);
+  }, []);
+
   return (
     <Router>
     <div className = "overflow-x-hidden">
@@ -30,7 +35,7 @@ const App = () => {
     <Routes>
       <Route path="/signin" element={<><SignIn /><Break /></>} /> 
       <Route path="/" element={<><Home/><Menu/></>} />
-      <Route path="/menu/:id" element={<><MenuItem /><Break /></>} /> 
+      <Route path="/menu/:id" element={<><MenuItem isAdmin={isAdmin}/><Break /></>} /> 
       <Route path="/signup" element={<><SignUp /><Break /></>} />
     </Routes>
     <Footer/>

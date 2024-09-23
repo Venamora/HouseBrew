@@ -9,35 +9,44 @@ const MenuData = [
     id: 1,
     img: Img2,
     name: 'Americano',
-    description: 'A bold espresso with hot water. Perfect for those who enjoy a strong coffee experience.',
+    description: 'A bold espresso with hot water.',
+    price: 'Rp 20.000',
     aosDelay: 100,
   },
   {
     id: 2,
     img: Img3,
     name: 'Latte',
-    description: 'Smooth espresso with steamed milk. A gentle coffee experience for a relaxing moment.',
+    description: 'Smooth espresso with steamed milk.',
+    price: 'Rp 30.000',
     aosDelay: 100,
   },
   {
     id: 3,
     img: Img2,
     name: 'Manual Brew',
-    description: 'Hand-crafted brewed coffee using the best beans. A treat for coffee connoisseurs.',
+    description: 'Hand-crafted brewed coffee.',
+    price: 'Rp 25.000',
     aosDelay: 300,
   },
   {
     id: 4,
     img: Img2,
     name: 'Magic Brew',
-    description: 'Our signature secret brew with a unique flavor. A must-try for adventurous coffee lovers.',
+    description: 'Our signature secret brew.',
+    price: 'Rp28.000',
     aosDelay: 400,
   },
 ];
 
-const MenuItem = () => {
+const MenuItem = ({isAdmin}) => {
   const { id } = useParams();
+  const navigate = useNavigate()
   const menuItem = MenuData.find(item => item.id === parseInt(id));
+
+  if (!isAdmin) {
+    navigate('/'); 
+  }
 
   if (!menuItem) {
     return <div>Menu item not found</div>;
@@ -49,6 +58,7 @@ const MenuItem = () => {
         <img src={menuItem.img} alt={menuItem.name} className="w-full h-auto mb-4 rounded-lg" />
         <h1 className="text-4xl font-bold mb-4">{menuItem.name}</h1>
         <p className="text-lg text-gray-700">{menuItem.description}</p>
+        <p className="text-lg text-gray-700">{menuItem.price}</p>
       </div>
     </div>
   );
