@@ -1,23 +1,37 @@
-import { useState, useEffect, useCallback } from "react";
+"use client";
+
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { requestGetKopi } from "../helper/integration/Menu";
 
-const useFetchKopi = (filterQuery = {}, sortBy = "asc") => {
+const useFetchKopi = (
+  filterQuery = {},
+  sortQuery = { order: "asc", sortBy: "nama" }
+) => {
   const [data, setData] = useState([]);
+
+  const memoizedFilterQuery = useMemo(
+    () => filterQuery,
+    [JSON.stringify(filterQuery)]
+  );
+  const memoizedSortQuery = useMemo(
+    () => sortQuery,
+    [JSON.stringify(sortQuery)]
+  );
 
   const fetchKopi = useCallback(async () => {
     try {
-      const data = await requestGetKopi(filterQuery, sortBy);
+      const data = await requestGetKopi(memoizedFilterQuery, memoizedSortQuery);
       setData(data.data);
     } catch (err) {
       alert(err.message);
     }
-  }, [filterQuery, sortQuery]);
+  }, [memoizedFilterQuery, memoizedSortQuery]);
 
   useEffect(() => {
     fetchKopi();
-  }, [fetchKopi, filterQuery, sortQuery]);
+  }, [memoizedFilterQuery, memoizedSortQuery]);
 
-  return { data };
+  return data;
 };
 
 export default useFetchKopi;
