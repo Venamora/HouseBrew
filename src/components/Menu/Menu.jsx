@@ -1,12 +1,15 @@
+"use client";
+
 import React from "react";
 import Img2 from "../../assets/americano.png";
 import Img3 from "../../assets/latte.png";
 import "./Menu.css";
+import useFetchKopi from "../../hook/useFetchKopi";
 
 const MenuData = [
   {
     id: 1,
-    img: Img2,
+    img: "https://static.vecteezy.com/system/resources/thumbnails/047/312/146/small/coffee-beans-and-grounds-png.png",
     name: "Americano",
     description: "A bold espresso with hot water.",
     aosDelay: 100,
@@ -35,6 +38,8 @@ const MenuData = [
 ];
 
 const Menu = () => {
+  const kopi = useFetchKopi();
+
   return (
     <>
       <span id="menu"></span>
@@ -57,26 +62,28 @@ const Menu = () => {
           {/* Menu Card Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-14 md:gap-6 place-items-center">
             {/* Display first 2 items (index 1 and 2) */}
-            {MenuData.filter((data, index) => index < 2).map((data, index) => (
-              <div
-                data-aos="fade-up"
-                data-aos-delay={data.aosDelay}
-                key={index}
-                className="flex flex-col items-center rounded-2xl bg-white hover:bg-primary hover text-white shadow-xl duration-200 max-w-[400px] group relative text-center"
-              >
-                <img
-                  src={data.img}
-                  alt={data.name}
-                  className="max-w-[300px] block mx-auto transform -translate-y-1 group-hover:scale-110 group-hover:rotate-6 duration 200"
-                />
-                <h1 className="text-xl font-semibold text-gray-600 group-hover:text-white">
-                  {data.name}
-                </h1>
-                <p className="p-3 text-gray-600 group-hover:text-white">
-                  {data.description}
-                </p>
-              </div>
-            ))}
+            {kopi
+              .filter((data, index) => index < 2)
+              .map((data, index) => (
+                <div
+                  data-aos="fade-up"
+                  data-aos-delay={data.aosDelay}
+                  key={index}
+                  className="flex flex-col items-center rounded-2xl bg-white hover:bg-primary hover text-white shadow-xl duration-200 max-w-[400px] group relative text-center"
+                >
+                  <img
+                    src={data.image}
+                    alt={data.nama}
+                    className="w-[250px] block mx-auto transform -translate-y-1 group-hover:scale-110 group-hover:rotate-6 duration 200"
+                  />
+                  <h1 className="text-xl font-semibold text-gray-600 group-hover:text-white">
+                    {data.nama}
+                  </h1>
+                  <p className="p-3 text-gray-600 group-hover:text-white">
+                    {data.deskripsi}
+                  </p>
+                </div>
+              ))}
 
             {/* Display next 2 items (index 3 and 4) */}
             {MenuData.filter((data, index) => index >= 2 && index < 4).map(
@@ -90,7 +97,7 @@ const Menu = () => {
                   <img
                     src={data.img}
                     alt={data.name}
-                    className="max-w-[300px] block mx-auto transform -translate-y-1 group-hover:scale-110 group-hover:rotate-6 duration 300"
+                    className="w-[250px] block mx-auto transform -translate-y-1 group-hover:scale-110 group-hover:rotate-6 duration 300"
                   />
                   <h1 className="text-xl font-semibold mt-2 text-gray-600 group-hover:text-white">
                     {data.name}
