@@ -82,6 +82,9 @@ const Menu = () => {
                   <p className="p-3 text-gray-600 group-hover:text-white">
                     {data.deskripsi}
                   </p>
+                  <p className="p-3 text-gray-600 group-hover:text-white">
+                    {data.harga}
+                  </p>
                 </div>
               ))}
 
@@ -105,6 +108,9 @@ const Menu = () => {
                   </h1>
                   <p className="p-3 text-gray-600 group-hover:text-white">
                     {data.description}
+                  </p>
+                  <p className="p-3 text-gray-600 group-hover:text-white">
+                    {data.harga}
                   </p>
                 </div>
               ))}
