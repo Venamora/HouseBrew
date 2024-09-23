@@ -15,6 +15,7 @@ export default {
         primary: "#854D3D",
         secondary: "#4A1E1B",
         brandDark: "#270C03",
+        bluelight: "#368AC1",
       },
       container: {
         center: true,
