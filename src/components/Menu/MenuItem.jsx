@@ -44,6 +44,10 @@ const MenuItem = () => {
     navigate('/'); 
   }
 
+  if (!isAdmin) {
+    navigate('/'); 
+  }
+
   if (!menuItem) {
     return <div>Menu item not found</div>;
   }
