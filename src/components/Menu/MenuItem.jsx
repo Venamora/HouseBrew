@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Img2 from '../../assets/americano.png';
 import Img3 from '../../assets/latte.png';
 
-// Same MenuData array for simplicity, but you could fetch this from an API instead
 const MenuData = [
   {
     id: 1,
@@ -44,10 +43,6 @@ const MenuItem = () => {
     navigate('/'); 
   }
 
-  if (!isAdmin) {
-    navigate('/'); 
-  }
-
   if (!menuItem) {
     return <div>Menu item not found</div>;
   }
@@ -58,6 +53,7 @@ const MenuItem = () => {
         <img src={menuItem.img} alt={menuItem.name} className="w-full h-auto mb-4 rounded-lg" />
         <h1 className="text-4xl font-bold mb-4">{menuItem.name}</h1>
         <p className="text-lg text-gray-700">{menuItem.description}</p>
+        <p className="text-lg text-gray-700">{menuItem.price}</p>
       </div>
     </div>
   );
