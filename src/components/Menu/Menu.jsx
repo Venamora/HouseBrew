@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import "./Menu.css";
+import { Link } from "react-router-dom";
 import useFetchKopi from "../../hook/useFetchKopi";
 
 const Menu = () => {
@@ -61,6 +62,7 @@ const Menu = () => {
           </div>
           {/* Menu Card Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-14 md:gap-6 place-items-center">
+          <Link to={`/menu/${data.id}`} key={index}>
             {/* Display first 2 items (index 1 and 2) */}
             {kopi
               .filter((data, index) => index < 2)
@@ -113,7 +115,9 @@ const Menu = () => {
                     {data.harga}
                   </p>
                 </div>
+
               ))}
+              </Link>
           </div>
         </div>
       </div>
