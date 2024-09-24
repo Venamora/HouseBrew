@@ -1,45 +1,28 @@
-import React, { useState } from 'react';
-import './SignUp.css';
+import React, { useState } from "react";
+import "./SignUp.css";
+import { requestPostUser } from "../../helper/integration/SignIn";
 
 const Signup = () => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      fullName,
-      email,
-      username,
-      password,
-    });
+    try {
+      const data = await requestPostUser(username, password);
+
+      const name = data.data;
+      alert(`Admin ${name} created successfully`);
+    } catch {
+      alert("Failed to create an account");
+    }
   };
 
   return (
     <div className="signup-container">
       <div className="signup-box">
-        <h2 className='font-bold font-sans text-2xl'>Create an Account</h2>
+        <h2 className="font-bold font-sans text-2xl">Create an Account</h2>
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label>Full Name :</label>
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="input-group">
-            <label>Email :</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
           <div className="input-group">
             <label>Username :</label>
             <input
@@ -59,7 +42,7 @@ const Signup = () => {
             />
           </div>
           <p>
-            Already have an account?{' '}
+            Already have an account?{" "}
             <a href="/signin" className="signin-link">
               Sign in
             </a>
@@ -67,7 +50,6 @@ const Signup = () => {
           <button type="submit" className="signup-button">
             Sign in
           </button>
-          
         </form>
         <br />
       </div>
