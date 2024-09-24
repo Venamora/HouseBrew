@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Img2 from '../../assets/americano.png';
 import Img3 from '../../assets/latte.png';
 
@@ -40,12 +40,17 @@ const MenuData = [
 
 const MenuItem = ({isAdmin}) => {
   const { id } = useParams();
-  const navigate = useNavigate()
-  const menuItem = MenuData.find(item => item.id === parseInt(id));
+  console.log('id from URL:', id);
 
-  if (!isAdmin) {
-    navigate('/'); 
-  }
+  const navigate = useNavigate();
+  const menuItem = MenuData.find(item => item.id === parseInt(id));
+  console.log('Found menu item:', menuItem);
+
+  useEffect(() =>{
+    if (!isAdmin) {
+      navigate('/');
+    }
+  }, [isAdmin, navigate]);
 
   if (!menuItem) {
     return <div>Menu item not found</div>;
