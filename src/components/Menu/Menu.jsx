@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import "./Menu.css";
+import { Link } from "react-router-dom";
 import useFetchKopi from "../../hook/useFetchKopi";
 
 const Menu = () => {
@@ -65,6 +66,7 @@ const Menu = () => {
             {kopi
               .filter((data, index) => index < 2)
               .map((data, index) => (
+                <Link to={`/menu/${data.id}`} key={index}>
                 <div
                   data-aos="fade-up"
                   data-aos-delay={data.aosDelay}
@@ -86,12 +88,14 @@ const Menu = () => {
                     {data.harga}
                   </p>
                 </div>
+                </Link>
               ))}
 
             {/* Display next 2 items (index 3 and 4) */}
             {kopi
               .filter((data, index) => index >= 2 && index < 4)
               .map((data, index) => (
+                <Link to={`/menu/${data.id}`} key={index}>
                 <div
                   data-aos="fade-up"
                   data-aos-delay={data.aosDelay}
@@ -113,6 +117,7 @@ const Menu = () => {
                     {data.harga}
                   </p>
                 </div>
+                </Link>
               ))}
           </div>
         </div>
