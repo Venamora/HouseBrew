@@ -48,7 +48,7 @@ const Signup = () => {
             </a>
           </p>
           <button type="submit" className="signup-button">
-            Sign in
+            Sign Up
           </button>
         </form>
         <br />
